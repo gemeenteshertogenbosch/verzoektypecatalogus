@@ -13,7 +13,7 @@ php:
   debug: '0'
   secret: ""
   corsAllowOrigin: ['*']
-  trustedHosts: '^.*\\.example\\.com$|localhost'
+  trustedHosts: '^(.+\.)?common-ground\.dev$|^(.+\.)?zaakonline\.nl$|^example\.com$|^167.99.16.132|localhost'
   trustedProxies:
     - 10.0.0.0/8
     - 172.16.0.0/12
