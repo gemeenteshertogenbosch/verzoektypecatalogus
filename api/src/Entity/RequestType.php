@@ -16,8 +16,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * 
  * @ApiResource( 
- *  normalizationContext={"groups"={"read-requesttype"}},
- *  denormalizationContext={"groups"={"write-requesttype"}},
+ *  normalizationContext={"groups"={"read"}},
+ *  denormalizationContext={"groups"={"write"}},
  *  collectionOperations={
  *  	"get",
  *  	"post"
@@ -45,7 +45,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class RequestType
 {
     /**
-     * @var \Ramsey\Uuid\UuidInterface
+     * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
+     * @example e2984465-190a-4562-829e-a8cca81aa35d
      *	 
      * @ApiProperty(
      * 	   identifier=true,
@@ -59,6 +60,7 @@ class RequestType
      *     }
      * )
      *
+     * @Assert\Uuid
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
@@ -67,7 +69,8 @@ class RequestType
     private $id;
 
     /**
-     * @param string The RSIN of the organisation that ownes this proces
+     * @var string $rsin The RSIN of the organisation that ownes this proces
+     * @example 002851234
      * 
      * @ApiProperty(
      *     attributes={
@@ -80,20 +83,63 @@ class RequestType
      *     }
      * )
      * 
-     * @Groups({"read-requesttype", "write-requesttype"})
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 11
+     * )
+     * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
     private $rsin;
 
     /**
-     * @Groups({"read-requesttype", "write-requesttype"})
+	 * @var string $name The name of this RequestType
+     * @example My RequestType
+	 *
+	 * @ApiProperty(
+     * 	   iri="http://schema.org/name",
+	 *     attributes={
+	 *         "swagger_context"={
+	 *         	   "description" = "The name of this RequestType",
+	 *             "type"="string",
+	 *             "example"="My RequestType",
+	 *             "maxLength"="255",
+	 *             "required" = true
+	 *         }
+	 *     }
+	 * )
+	 * 
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      max = 255
+     * )
+	 * @Groups({"read"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"read-requesttype", "write-requesttype"})
+	 * @var string $description An short description of this RequestType
+     * @example This is the best request ever
+	 *
+	 * @ApiProperty(
+     * 	   iri="https://schema.org/description",
+	 *     attributes={
+	 *         "swagger_context"={
+	 *         	   "description" = "An short description of this RequestType",
+	 *             "type"="string",
+	 *             "example"="This is the best request ever",
+	 *             "maxLength"="2550"
+	 *         }
+	 *     }
+	 * )
+	 * 
+     * @Assert\Length(
+     *      max = 2550
+     * )
+	 * @Groups({"read"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -105,20 +151,19 @@ class RequestType
     private $properties;
 
     /**
+	 * @var object $extends The requestType that this requestType extends
+     * 
      * @Groups({"write-requesttype"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="extendedBy", fetch="EAGER")
      */
     private $extends;
 
     /**
+	 * @var object $extendedBy The requestTypes that extend this requestType
+	 * 
      * @ORM\OneToMany(targetEntity="App\Entity\RequestType", mappedBy="extends")
      */
     private $extendedBy;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Request", mappedBy="requestType")
-     */
-    private $requests;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -135,7 +180,6 @@ class RequestType
     {
     	$this->properties= new ArrayCollection();
      	$this->extendedBy = new ArrayCollection();
-     	$this->requests = new ArrayCollection();
     }
 
     public function getId()
@@ -259,37 +303,6 @@ class RequestType
             // set the owning side to null (unless already changed)
             if ($extendedBy->getExtends() === $this) {
                 $extendedBy->setExtends(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Request[]
-     */
-    public function getRequests(): Collection
-    {
-        return $this->requests;
-    }
-
-    public function addRequest(Request $request): self
-    {
-        if (!$this->requests->contains($request)) {
-            $this->requests[] = $request;
-            $request->setRequestType($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRequest(Request $request): self
-    {
-        if ($this->requests->contains($request)) {
-            $this->requests->removeElement($request);
-            // set the owning side to null (unless already changed)
-            if ($request->getRequestType() === $this) {
-                $request->setRequestType(null);
             }
         }
 
