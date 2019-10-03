@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -185,6 +186,13 @@ class RequestType
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function setId(string $id): self
+    {
+    	$this->id = $id;
+    	
+    	return $this;
     }
 
     public function getRsin(): ?string
