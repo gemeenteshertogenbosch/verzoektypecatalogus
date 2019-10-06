@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\RequestType;
 
 /**
- * This property follows the following shemes (in order of impotance)
+ * This property follows the following schemes (in order of importance)
  * https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md 
  * https://tools.ietf.org/html/draft-wright-json-schema-validation-00
  * http://json-schema.org/
@@ -109,13 +109,13 @@ class Property
     private $name;
     
     /**      
-	 * @var string $type The name of the property as used in api calls, extracted from title on snake_case basis
+	 * @var string $type The type of this property
      * @example string
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "The name of the property as used in api calls, extracted from title on snake_case basis",
+	 *         	   "description" = "The type of this property",
 	 *             "type"="string",
 	 *             "example"="string",
 	 *             "enum"={"string", "integer", "boolean", "number","array"},
@@ -180,13 +180,13 @@ class Property
     private $multipleOf;
 
     /**
-	 * @var string $multipleOf *Can only be used in combination with type integer* The maximum alowed value 
+	 * @var string $multipleOf *Can only be used in combination with type integer* The maximum allowed value 
      * @example 2
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* The maximum alowed value",
+	 *         	   "description" = "*Can only be used in combination with type integer* The maximum allowed value",
 	 *             "type"="integer",
 	 *             "example"="2",
 	 *             "maxLength"="255"
@@ -201,13 +201,13 @@ class Property
     private $maximum;
 
     /**
-	 * @var string $exclusiveMaximum *Can only be used in combination with type integer* Defines if the maximum is exlusive, e.g. a exlusive maximum of 5 would invalidate 5 but validate 4
+	 * @var string $exclusiveMaximum *Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4
      * @example true
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* Defines if the maximum is exlusive, e.g. a exlusive maximum of 5 would invalidate 5 but validate 4",
+	 *         	   "description" = "*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4",
 	 *             "type"="boolean",
 	 *             "example"=true
 	 *         }
@@ -221,13 +221,13 @@ class Property
     private $exclusiveMaximum;
 
     /**
-	 * @var string $minimum *Can only be used in combination with type integer* The minimum alowed value 
+	 * @var string $minimum *Can only be used in combination with type integer* The minimum allowed value 
      * @example 2
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* The minimum alowed value",
+	 *         	   "description" = "*Can only be used in combination with type integer* The minimum allowed value",
 	 *             "type"="integer",
 	 *             "example"="2",
 	 *             "maxLength"="255"
@@ -243,13 +243,13 @@ class Property
 
     /**
      * 
-	 * @var string $exclusiveMinimum *Can only be used in combination with type integer* Defines if the minimum is exlusive, e.g. a exlusive minimum of 5 would invalidate 5 but validate 6
+	 * @var string $exclusiveMinimum *Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6
      * @example true
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* Defines if the minimum is exlusive, e.g. a exlusive minimum of 5 would invalidate 5 but validate 4",
+	 *         	   "description" = "*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 4",
 	 *             "type"="boolean",
 	 *             "example"=true
 	 *         }
@@ -303,13 +303,13 @@ class Property
     private $minLength;
 
     /**
-	 * @var string $pattern A [regular expresion](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
+	 * @var string $pattern A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
      * @example [+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "A [regular expresion](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to",
+	 *         	   "description" = "A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to",
 	 *             "type"="string",
 	 *             "example"="[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?",
 	 *             "maxLength"="255"
@@ -340,13 +340,13 @@ class Property
     private $additionalItems;
 
     /**
-	 * @var string $maxItems *Can only be used in combination with type array* The maximum arraylength  
+	 * @var string $maxItems *Can only be used in combination with type array* The maximum array length  
      * @example 2
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type array* The minimum array length ",
+	 *         	   "description" = "*Can only be used in combination with type array* The maximum array length ",
 	 *             "type"="integer",
 	 *             "example"="2",
 	 *             "maxLength"="255"
@@ -361,13 +361,13 @@ class Property
     private $maxItems;
 
     /**
-	 * @var string $minItems *Can only be used in combination with type array* The minimum alowed value 
+	 * @var string $minItems *Can only be used in combination with type array* The minimum allowed value 
      * @example 2
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type array* The minimum alowed value",
+	 *         	   "description" = "*Can only be used in combination with type array* The minimum allowed value",
 	 *             "type"="integer",
 	 *             "example"="2",
 	 *             "maxLength"="255"
@@ -402,13 +402,13 @@ class Property
     private $uniqueItems;
 
     /**
-	 * @var string $maxProperties *Can only be used in combination with type integer* The minimum alowed value 
+	 * @var string $maxProperties *Can only be used in combination with type integer* The maximum amount of properties an object should contain 
      * @example 2
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* The minimum alowed value",
+	 *         	   "description" = "*Can only be used in combination with type integer* The maximum amount of properties an object should contain",
 	 *             "type"="integer",
 	 *             "example"="2",
 	 *             "maxLength"="255"
@@ -444,7 +444,7 @@ class Property
     private $minProperties;
 
     /**
-	 * @var boolean $required Only Whether or not this property is required
+	 * @var boolean $required Only whether or not this property is required
      * @example false
 	 *
 	 * @ApiProperty(
@@ -488,13 +488,13 @@ class Property
     private $object;
 
     /**
-	 * @var array $enum An array of posible values, input is limited to this array
+	 * @var array $enum An array of possible values, input is limited to this array
      * @example ['first','second]
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "An array of posible values, input is limited to this array",
+	 *         	   "description" = "An array of possible values, input is limited to this array",
 	 *             "type"="array",
 	 *             "example"="['first','second]'"
 	 *         }
@@ -507,13 +507,13 @@ class Property
     private $enum = [];
 
     /**
-	 * @var array $allOf *mutually exclusive with using type* An array of posible types that an property should confirm to
+	 * @var array $allOf *mutually exclusive with using type* An array of possible types that an property should confirm to
      * @example ['string','boolean']
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*mutually exclusive with using type* An array of posible types that an property should confirm to",
+	 *         	   "description" = "*mutually exclusive with using type* An array of possible types that an property should confirm to",
 	 *             "type"="array",
 	 *             "example"="['string','boolean']"
 	 *         }
@@ -525,13 +525,13 @@ class Property
     private $allOf = [];
 
     /**
-	 * @var array $anyOf *mutually exclusive with using type* An array of posible types that an property mighy confirm to
+	 * @var array $anyOf *mutually exclusive with using type* An array of possible types that an property might confirm to
      * @example ['string','boolean']
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*mutually exclusive with using type* An array of posible types that an property mighy confirm to",
+	 *         	   "description" = "*mutually exclusive with using type* An array of possible types that an property might confirm to",
 	 *             "type"="array",
 	 *             "example"="['string','boolean']"
 	 *         }
@@ -543,13 +543,13 @@ class Property
     private $anyOf = [];
 
     /**
-	 * @var array $oneOf *mutually exclusive with using type* An array of posible types that an property might confirm to
+	 * @var array $oneOf *mutually exclusive with using type* An array of possible types that an property must confirm to
      * @example ['string','boolean']
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*mutually exclusive with using type* An array of posible types that an property might confirm to",
+	 *         	   "description" = "*mutually exclusive with using type* An array of possible types that an property must confirm to",
 	 *             "type"="array",
 	 *             "example"="['string','boolean']"
 	 *         }
@@ -691,13 +691,13 @@ class Property
     private $writeOnly;
 
     /**
-	 * @var string $xml An XML representation of the swaggor docs
+	 * @var string $xml An XML representation of the swagger docs
      * @example <xml></xml>
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "An XML representation of the swaggor docs",
+	 *         	   "description" = "An XML representation of the swagger docs",
 	 *             "type"="string",
 	 *             "format"="xml",
 	 *             "example"="<xml></xml>",
@@ -734,13 +734,13 @@ class Property
     private $externalDoc;
 
     /**
-	 * @var string $example An example of the value that should be suplied
+	 * @var string $example An example of the value that should be supplied
      * @example My value
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "An example of the value that should be suplied",
+	 *         	   "description" = "An example of the value that should be supplied",
 	 *             "type"="string",
 	 *             "example"="My value",
 	 *             "maxLength"="255"
@@ -755,13 +755,13 @@ class Property
     private $example;
 
     /**
-	 * @var boolean $deprecated Whether or not this property has been deprecated and wil be reomoved in the future
+	 * @var boolean $deprecated Whether or not this property has been deprecated and wil be removed in the future
      * @example false
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "Whether or not this property has been deprecated and wil be reomoved in the future",
+	 *         	   "description" = "Whether or not this property has been deprecated and wil be removed in the future",
 	 *             "type"="boolean",
 	 *             "example"=false
 	 *         }
@@ -775,13 +775,13 @@ class Property
     private $deprecated;
 
     /**
-	 * @var string $availableUntil  The moment from wich this value is available
+	 * @var string $availableUntil  The moment from which this value is available
      * @example 2019-09-16T14:26:51+00:00
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "The moment from wich this value is available",
+	 *         	   "description" = "The moment from which this value is available",
 	 *             "type"="string",
 	 *             "format"="date-time",
 	 *             "example"="2019-09-16T14:26:51+00:00"
@@ -899,7 +899,7 @@ class Property
         
     public function getName(): ?string
     {
-    	// titles wil be used as trings so lets convert the to camelcase
+    	// titles wil be used as strings so lets convert the to camelcase
     	$string =  $this->title;
     	$string = trim($string); //removes whitespace at begin and ending
     	$string = preg_replace('/\s+/', '_', $string); // replaces other whitespaces with _
