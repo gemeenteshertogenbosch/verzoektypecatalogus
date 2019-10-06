@@ -15,10 +15,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * 
  * @ApiResource( 
- *  normalizationContext={"groups"={"read"}},
- *  denormalizationContext={"groups"={"write"}},
+ *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
+ *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
  *  collectionOperations={
  *  	"get",
  *  	"post"
@@ -45,32 +44,32 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class RequestType
 {
-    /**
-     * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
-     * @example e2984465-190a-4562-829e-a8cca81aa35d
-     *	 
-     * @ApiProperty(
-     * 	   identifier=true,
-     *     attributes={
-     *         "swagger_context"={
+	/**
+	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
+	 * @example e2984465-190a-4562-829e-a8cca81aa35d
+	 *
+	 * @ApiProperty(
+	 * 	   identifier=true,
+	 *     attributes={
+	 *         "swagger_context"={
 	 *         	   "description" = "The UUID identifier of this object",
-     *             "type"="string",
-     *             "format"="uuid",
-     *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-     *         }
-     *     }
-     * )
-     *
-     * @Assert\Uuid
-     * @ORM\Id
-     * @ORM\Column(type="uuid", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-     */
-    private $id;
+	 *             "type"="string",
+	 *             "format"="uuid",
+	 *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
+	 *         }
+	 *     }
+	 * )
+	 *
+	 * @Assert\Uuid
+	 * @ORM\Id
+	 * @ORM\Column(type="uuid", unique=true)
+	 * @ORM\GeneratedValue(strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+	 */
+	private $id;
 
     /**
-     * @var string $rsin The RSIN of the organisation that ownes this proces
+     * @var string $sourceOrganisation The RSIN of the organisation that ownes this proces
      * @example 002851234
      * 
      * @ApiProperty(
@@ -93,7 +92,7 @@ class RequestType
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
-    private $rsin;
+    private $sourceOrganisation;
 
     /**
 	 * @var string $name The name of this RequestType
@@ -195,14 +194,14 @@ class RequestType
     	return $this;
     }
 
-    public function getRsin(): ?string
+    public function getSourceOrganisation(): ?string
     {
-        return $this->rsin;
+    	return $this->sourceOrganisation;
     }
 
-    public function setRsin(string $rsin): self
+    public function setSourceOrganisation(string $sourceOrganisation): self
     {
-        $this->rsin = $rsin;
+    	$this->sourceOrganisation = $sourceOrganisation;
 
         return $this;
     }
