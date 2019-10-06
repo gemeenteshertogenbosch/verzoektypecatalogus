@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                      {
  *                          "name" = "extend",
  *                          "in" = "query",
- *                          "description" = "Add the properties of the requestType that this requetType extends",
+ *                          "description" = "Add the properties of the requestType that this requestType extends",
  *                          "required" = false,
  *                          "type" : "boolean"
  *                      }
@@ -69,13 +69,13 @@ class RequestType
 	private $id;
 
     /**
-     * @var string $sourceOrganisation The RSIN of the organisation that ownes this proces
+     * @var string $sourceOrganisation The RSIN of the organization that owns this process
      * @example 002851234
      * 
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The RSIN of the organisation that ownes this proces",
+ 	 *         	   "description" = "The RSIN of the organization that owns this process",
      *             "type"="string",
      *             "example"="002851234",
  	*              "maxLength"="255"
@@ -249,7 +249,7 @@ class RequestType
     }
         
     /*
-     * Used for soft adding properties for the extention functionality
+     * Used for soft adding properties for the extension functionality
      */
     public function extendProperty(Property $property): self
     {
