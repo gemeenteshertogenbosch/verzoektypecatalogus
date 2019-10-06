@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
     	$property->setTitle('Datum');
     	$property->setType('string');
     	$property->setFormat('date');
-    	$property->setDescription('Waneer gaat u verhuizen?');
+    	$property->setDescription('Wat is de verhuisdatum?');
     	$property->setRequestType($verhuizenNL);
     	$manager->persist($property);
     	
@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
     	$property->setType('string');
     	$property->setFormat('bag');
     	$property->setRequired(true);
-    	$property->setDescription('Waar gaat u heen verhuizen?');
+    	$property->setDescription('Wat is het nieuwe adres?');
     	$property->setRequestType($verhuizenNL);
     	$manager->persist($property);
     	
@@ -82,7 +82,7 @@ class AppFixtures extends Fixture
     	$property = new Property();
     	//$verhuizenNL->setId('');
     	$property->setTitle('Doorgeven gegevens');
-    	$property->setDescription('Wilt u dat we uw verhuizing tevens doorgeven aan postNl?');
+    	$property->setDescription('Wilt u dat we uw verhuizing ook doorgeven aan postNl?');
     	$property->setType('boolean');
     	$property->setFormat('boolean');
     	$property->setRequestType($verhuizenNL);
@@ -103,7 +103,7 @@ class AppFixtures extends Fixture
     	$property->setType('string');
     	$property->setFormat('bsn');
     	$property->setRequired(true);
-    	$property->setDescription('Wiens huwelijkmoet worden omgezet');
+    	$property->setDescription('Welke partners willen hun partnerschap omzetten?');
     	$property->setRequestType($meldingTrouwenNL);
     	$manager->persist($property);
     	
@@ -113,7 +113,7 @@ class AppFixtures extends Fixture
     	$property->setType('string');
     	$property->setFormat('bsn');
     	$property->setRequired(true);
-    	$property->setDescription('Wiens huwelijkmoet worden omgezet');
+    	$property->setDescription('Welke partners willen hun partnerschap omzetten?');
     	$property->setRequestType($meldingTrouwenNL);
     	$manager->persist($property);    	
     	
@@ -121,7 +121,7 @@ class AppFixtures extends Fixture
     	$omzettingNL->setId('dc65cbe9-d608-4946-b3d4-368b5b0c4061');
     	$omzettingNL->setSourceOrganisation('0000');
     	$omzettingNL->setName('Omzetting');
-    	$omzettingNL->setDescription('Het omzetten van een reeds bestaand partnerschap in een huwelijk ');
+    	$omzettingNL->setDescription('Het omzetten van een bestaand partnerschap in een huwelijk.');
     	$manager->persist($omzettingNL);
     	
     	$property= new Property();
@@ -129,7 +129,7 @@ class AppFixtures extends Fixture
     	$property->setTitle('Ingangsdatum');
     	$property->setType('string');
     	$property->setFormat('date');
-    	$property->setDescription('Heeft u een omzettings trouwdatum?');
+    	$property->setDescription('Wat is de datum voor de omzetting naar huwelijk?');
     	$property->setRequestType($verhuizenNL);
     	$manager->persist($property);
     	
@@ -139,7 +139,7 @@ class AppFixtures extends Fixture
     	$property->setType('string');
     	$property->setFormat('bsn');
     	$property->setRequired(true);
-    	$property->setDescription('Wiens huwelijkmoet worden omgezet');
+    	$property->setDescription('Welke partners willen hun partnerschap omzetten');
     	$property->setRequestType($omzettingNL);
     	$manager->persist($property);
     	    	
@@ -149,7 +149,7 @@ class AppFixtures extends Fixture
     	$property->setType('string');
     	$property->setFormat('bsn');
     	$property->setRequired(true);
-    	$property->setDescription('Wiens huwelijkmoet worden omgezet');
+    	$property->setDescription('Welke partners willen hun partnerschap omzetten');
     	$property->setRequestType($omzettingNL);
     	$manager->persist($property);    	
     	
@@ -165,7 +165,7 @@ class AppFixtures extends Fixture
     	$property->setTitle('Melding ');
     	$property->setType('string');
     	$property->setFormat('uri');
-    	$property->setDescription('Als het goed is heeft u reeds melding gedaan van uw voorgenomen huwelijk, onder welke uri kunnen we deze terugvinden?');
+    	$property->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
@@ -174,7 +174,7 @@ class AppFixtures extends Fixture
     	$property->setTitle('Datum');
     	$property->setType('string');
     	$property->setFormat('date');
-    	$property->setDescription('Heeft u een omzettings trouwdatum?');
+    	$property->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
@@ -187,7 +187,7 @@ class AppFixtures extends Fixture
     	$property->setMinLength('7');
     	$property->setEnum(['trouwen','partnerschap']);
     	$property->setRequired(true);
-    	$property->setDescription('Wilt u een huwelijk of partnerschap aangaan?');
+    	$property->setDescription('Selecteer een huwelijk of partnerschap?');
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
@@ -223,7 +223,7 @@ class AppFixtures extends Fixture
     	$property->setMaxLength('9');
     	$property->setMinLength('9');
     	$property->setRequired(true);
-    	$property->setDescription('Wie gaan er verhuizen?');
+    	$property->setDescription('Wie zijn de getuigen van partner 1?');
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
@@ -235,7 +235,7 @@ class AppFixtures extends Fixture
     	$property->setMinProperties(1);
     	$property->setMaxProperties(2);
     	$property->setRequired(true);
-    	$property->setDescription('Wie gaan er verhuizen?');
+    	$property->setDescription('Wie zijn de getuigen van partner 2?');
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
@@ -244,7 +244,7 @@ class AppFixtures extends Fixture
     	$trouwenUtrecht->setExtends($trouwenNL);    	
     	$trouwenUtrecht->setSourceOrganisation('002220647');
     	$trouwenUtrecht->setName('Trouwen of Partnerschap in Utrecht');
-    	$trouwenUtrecht->setDescription('Samen gaan in de leukste stad van Nederland');
+    	$trouwenUtrecht->setDescription('Trouwen of Partnerschap in Utrecht');
     	$manager->persist($trouwenUtrecht);
     	
     	$property= new Property();
@@ -254,7 +254,7 @@ class AppFixtures extends Fixture
     	$property->setFormat('uri');
     	$property->setMaxLength('255');
     	$property->setRequired(true);
-    	$property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventueele extra\'s) op te slaan');
+    	$property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
