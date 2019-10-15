@@ -56,9 +56,11 @@ class Property
 	private $id;
 
     /**
-	 * @var string $requestType The requestType that this property belongs to
+	 * @var Object  $requestType The requestType that this property belongs to
 	 * 
      * @Assert\NotBlank
+     * @MaxDepth(1)
+     * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -153,7 +155,7 @@ class Property
 	 *       
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
-     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent})
+     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */

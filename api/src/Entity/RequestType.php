@@ -146,7 +146,8 @@ class RequestType
     private $description;
 
     /**
-     * @Groups({"read-requesttype", "write-requesttype"})
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
     private $properties;
