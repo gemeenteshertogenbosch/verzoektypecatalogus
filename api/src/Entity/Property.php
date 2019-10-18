@@ -159,13 +159,13 @@ class Property
     private $format;
 
     /**
-	 * @var string $multipleOf *Can only be used in combination with type integer* Specifies a number that value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5 
+	 * @var string $multipleOf *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5 
      * @example 2
 	 *
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* Specifies a number that value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5",
+	 *         	   "description" = "*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5",
 	 *             "type"="integer",
 	 *             "example"="2",
 	 *             "maxLength"="255"
