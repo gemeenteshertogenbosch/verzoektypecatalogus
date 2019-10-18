@@ -12,6 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 
 use App\Entity\RequestType;
@@ -55,9 +56,11 @@ class Property
 	private $id;
 
     /**
-	 * @var string $requestType The requestType that this property belongs to
+	 * @var Object  $requestType The requestType that this property belongs to
 	 * 
      * @Assert\NotBlank
+     * @MaxDepth(1)
+     * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -143,7 +146,7 @@ class Property
 	 *         	   "description" = "The swagger type of the property as used in api calls",
 	 *             "type"="string",
 	 *             "example"="string",
-	 *             "enum"={"int32","int64","float","double","byte","binary","date","duration","date-time","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban"},
+	 *             "enum"={"int32","int64","float","double","byte","binary","date","duration","date-time","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"},
 	 *             "maxLength"="255",
 	 *             "required" = true
 	 *         }
@@ -152,7 +155,7 @@ class Property
 	 *       
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
-     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban"})
+     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */

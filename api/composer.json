@@ -17,11 +17,11 @@
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.3.*",
         "symfony/mercure-bundle": "*",
+        "doctrine/doctrine-fixtures-bundle": "^3.2",
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
-        "doctrine/doctrine-fixtures-bundle": "^3.2",
         "symfony/maker-bundle": "^1.11",
         "symfony/profiler-pack": "^1.0"
     },

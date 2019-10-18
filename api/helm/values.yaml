@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 php:
-  repository: docker.io/conduction/vrc-php
+  repository: docker.io/conduction/vtc-php
   tag: latest
   pullPolicy: Always
   replicaCount: 1
@@ -13,22 +13,22 @@ php:
   debug: '0'
   secret: ""
   corsAllowOrigin: ['*']
-  trustedHosts: '^(.+\.)?common-ground\.dev$|^(.+\.)?zaakonline\.nl$|^example\.com$|^167.99.16.132|localhost'
+  trustedHosts: '^(.+\.)?common-ground\.dev$|^(.+\.)?zaakonline\.nl$|^(.+\.)?conduction\.nl$|^example\.com$|^(.+\.)?178.128.142.152$|178.128.142.152|localhost'
   trustedProxies:
     - 10.0.0.0/8
     - 172.16.0.0/12
     - 192.168.0.0/16
 
 nginx:
-  repository: docker.io/conduction/vrc-nginx
+  repository: docker.io/conduction/vtc-nginx
   tag: latest
   pullPolicy: Always
   replicaCount: 1
 
 varnish:
   enabled: true
-  #url: https://example.com
-  repository: docker.io/conduction/vrc-varnish
+  url: https://vtc-varnish
+  repository: docker.io/conduction/vtc-varnish
   tag: latest
   pullPolicy: Always
   replicaCount: 1
@@ -51,7 +51,7 @@ postgresql:
 #    tag: alpine
 
 mercure:
-  enabled: true
+  enabled: false
   publishUrl: http://mercure/hub
   subscribeUrl: https://mercure.example.com/hub
   allowAnonymous: "1"

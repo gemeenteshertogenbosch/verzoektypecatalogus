@@ -13,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ApiResource( 
@@ -69,7 +70,7 @@ class RequestType
 	private $id;
 
     /**
-     * @var string $sourceOrganisation The RSIN of the organization that owns this process
+     * @var string $sourceOrganization The RSIN of the organization that owns this process
      * @example 002851234
      * 
      * @ApiProperty(
@@ -92,7 +93,7 @@ class RequestType
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
-    private $sourceOrganisation;
+    private $sourceOrganization;
 
     /**
 	 * @var string $name The name of this RequestType
@@ -145,7 +146,8 @@ class RequestType
     private $description;
 
     /**
-     * @Groups({"read-requesttype", "write-requesttype"})
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
     private $properties;
@@ -194,14 +196,14 @@ class RequestType
     	return $this;
     }
 
-    public function getSourceOrganisation(): ?string
+    public function getSourceOrganization(): ?string
     {
-    	return $this->sourceOrganisation;
+    	return $this->sourceOrganization;
     }
 
-    public function setSourceOrganisation(string $sourceOrganisation): self
+    public function setSourceOrganization(string $sourceOrganization): self
     {
-    	$this->sourceOrganisation = $sourceOrganisation;
+    	$this->sourceOrganization = $sourceOrganization;
 
         return $this;
     }
