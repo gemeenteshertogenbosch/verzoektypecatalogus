@@ -276,7 +276,7 @@
         "version": "v4.3.1"
     },
     "symfony/dom-crawler": {
-        "version": "v4.3.4"
+        "version": "v4.3.5"
     },
     "symfony/dotenv": {
         "version": "v4.3.1"
@@ -309,7 +309,7 @@
         ]
     },
     "symfony/form": {
-        "version": "v4.3.4"
+        "version": "v4.3.5"
     },
     "symfony/framework-bundle": {
         "version": "4.2",
@@ -346,7 +346,7 @@
         "version": "v4.3.1"
     },
     "symfony/intl": {
-        "version": "v4.3.4"
+        "version": "v4.3.5"
     },
     "symfony/maker-bundle": {
         "version": "1.0",
