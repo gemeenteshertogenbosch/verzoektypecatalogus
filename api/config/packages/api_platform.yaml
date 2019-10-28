@@ -18,8 +18,21 @@ api_platform:
     # The basic API data
     title: '%env(APP_TITLE)%'
     description: |
+        API Details
+        - Component: %env(APP_TITLE)%
+        - Reference: %env(APP_NAME)%
+        - Enviroment: %env(APP_ENV)%
+        - Version: %env(APP_VERSION)%
+        - Repository: [%env(APP_REPRO)%](%env(APP_REPRO)%) / [zip](%env(APP_REPRO)%/archive/master.zip)
+        - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+        
         %env(APP_DESCRIPTION)% 
-                 
+                                 
+        Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie, ofwel user. Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
+        JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
+        Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
+        
+    
     version: '%env(APP_VERSION)%'  
     
     # Lets configure the api platform bundle to display the docs in confrmation with common ground standards 
