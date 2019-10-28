@@ -1,7 +1,5 @@
 # Installation
 
-
-
 ## Setting up tiller
 
 ## Setting up helm
@@ -23,15 +21,22 @@ En kunnen vervolgens het dashboard aanroepen in onze favoriete browser met:
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:dashboard-kubernetes-dashboard:https/proxy/#!/login
 
 ## Deploying trough helm
+First we always need to update our dependencys
+$ helm dependency update ./api/helm
 
 If you want to create a new instance
-$ helm install ./api/helm --name commonground --kubeconfig="api/helm/kubeconfig.yaml"
+$ helm install ./api/helm --name vtc --kubeconfig="api/helm/kubeconfig.yaml"
 
 Or update if you want to update an existing one
-$ helm upgrade commonground  ./api/helm --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm upgrade vtc  ./api/helm --kubeconfig="api/helm/kubeconfig.yaml" 
 
 Or del if you want to delete an existing  one
-$ helm del commonground  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del vtc  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+
+or for the dev enviroments
+$ helm install ./api/helm --name vtc-dev --kubeconfig="api/helm/kubeconfig.yaml"
+$ helm upgrade vtc-dev  ./api/helm --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del vtc-dev  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
 
 Note that you can replace commonground with the namespace that you want to use (normally the name of your component).
 

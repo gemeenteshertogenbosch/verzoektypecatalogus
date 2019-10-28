@@ -13,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ApiResource( 
@@ -29,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                      {
  *                          "name" = "extend",
  *                          "in" = "query",
- *                          "description" = "Add the properties of the requestType that this requetType extends",
+ *                          "description" = "Add the properties of the requestType that this requestType extends",
  *                          "required" = false,
  *                          "type" : "boolean"
  *                      }
@@ -69,13 +70,13 @@ class RequestType
 	private $id;
 
     /**
-     * @var string $sourceOrganisation The RSIN of the organisation that ownes this proces
+     * @var string $sourceOrganization The RSIN of the organization that owns this process
      * @example 002851234
      * 
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The RSIN of the organisation that ownes this proces",
+ 	 *         	   "description" = "The RSIN of the organization that owns this process",
      *             "type"="string",
      *             "example"="002851234",
  	*              "maxLength"="255"
@@ -92,7 +93,7 @@ class RequestType
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
-    private $sourceOrganisation;
+    private $sourceOrganization;
 
     /**
 	 * @var string $name The name of this RequestType
@@ -145,7 +146,8 @@ class RequestType
     private $description;
 
     /**
-     * @Groups({"read-requesttype", "write-requesttype"})
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
     private $properties;
@@ -194,14 +196,14 @@ class RequestType
     	return $this;
     }
 
-    public function getSourceOrganisation(): ?string
+    public function getSourceOrganization(): ?string
     {
-    	return $this->sourceOrganisation;
+    	return $this->sourceOrganization;
     }
 
-    public function setSourceOrganisation(string $sourceOrganisation): self
+    public function setSourceOrganization(string $sourceOrganization): self
     {
-    	$this->sourceOrganisation = $sourceOrganisation;
+    	$this->sourceOrganization = $sourceOrganization;
 
         return $this;
     }
@@ -249,7 +251,7 @@ class RequestType
     }
         
     /*
-     * Used for soft adding properties for the extention functionality
+     * Used for soft adding properties for the extension functionality
      */
     public function extendProperty(Property $property): self
     {
