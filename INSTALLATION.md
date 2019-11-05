@@ -85,6 +85,7 @@ $ helm del vtc-prod --purge --kubeconfig="api/helm/kubeconfig.yaml --namespace=p
 ```
 
 
+
 ## Making your app known on NLX
 The proto component commes with an default NLX setup, if you made your own component however you might want to provide it trough the [NLX](https://www.nlx.io/) service. Furntunatly the proto component commes with an nice setup for NLX integration.
 
