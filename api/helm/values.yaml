@@ -32,15 +32,15 @@ php:
   secret: ""
 
 nginx:
-  repository: docker.io/conduction/vtc-nginx
+  repository: docker.io/conduction/protocomponent-nginx
   tag: latest
   pullPolicy: Always
   replicaCount: 1
 
 varnish:
   enabled: true
-  url: https://vtc-varnish
-  repository: docker.io/conduction/vtc-varnish
+  #url: https://example.com
+  repository: docker.io/conduction/protocomponent-varnish
   tag: latest
   pullPolicy: Always
   replicaCount: 1
@@ -63,7 +63,7 @@ postgresql:
 #    tag: alpine
 
 mercure:
-  enabled: false
+  enabled: true
   publishUrl: http://mercure/hub
   subscribeUrl: https://mercure.example.com/hub
   allowAnonymous: "1"
